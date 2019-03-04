@@ -19,7 +19,7 @@ I succeeded and it took me ~1h20m to implement this in Python complete with basi
 * 15m reading and experimenting to understand how graphql is encoded on the wire, split across understanding how to query, how to mutate, how to specify variables and how to check for errors
 * 20m generic writing/refactoring/debugging Python code: futzing with the http library, remembering how to drop to a shell, get envvars, etc
 
-I intentionally did not spend much time reading Github's documentation unless I got stuck (as I wanted to be in the mindset of the impatient developer), and likewise intentionally did not try to use any pre-existing libraries for GraphQL. 
+I intentionally did not spend much time reading Github's documentation unless I got stuck (as I wanted to be in the mindset of the impatient developer), and likewise intentionally did not try to use any pre-existing Python libraries for GraphQL. 
 
 Takeaways
 ---------
@@ -32,7 +32,7 @@ Takeaways
 * A "Copy as Curl" from the graphiql interface would've saved me a decent amount of time in understanding how GraphQL was encoded on the wire, which would've made it easier for me to implement my Python client from scratch, however, **once I understood the wire protocol, it was very easy to implement.**
   * A quick win here would be telling people to open up the dev tools, but it'd be even nicer to contribute "copy as curl" to Graphiql.
 * **Having GraphQL posted to the server as JSON is mildly annoying** because you need to escape quotes in GraphQL strings and JSON doesn't support multiline strings.
-  * After I completed this project, I put together several bash scripts to create an issue, much like a customer might create an Incident from a bash script (see `create-issue-*.sh`); you end up having to trade off between succintness, multiline queries, comprehensibility and ability to access shell variables. The best option is probably `create-issue-readable.sh`, but due to having to deal with string quoting **GraphQL is less usable on the command line than a `curl -X POST` with a couple of data args**.
+  * After I completed this project, I put together several bash scripts to create an issue, much like a customer might create an Incident from a bash script (see `create-issue-*.sh`); you end up having to trade off between succintness, multiline queries, comprehensibility and ability to access shell variables. The best option is probably `create-issue-readable.sh`, but due to having to deal with string quoting **GraphQL is less usable in shell scripts than a `curl -X POST` with a couple of data args**.
   * A workaround for this might be to support sending raw GraphQL queries in the POST (presuming it's allowed by the spec and we can think of a way to allow graphql variables to be included) instead of wrapping the query in JSON strings.
   * Variations of curl such as [graphqurl](https://github.com/hasura/graphqurl) might help out here, but they will still be an extra thing to install.
 
