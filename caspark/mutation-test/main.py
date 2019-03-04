@@ -12,7 +12,6 @@ import requests
 import os
 import pprint
 
-# curl -H "Authorization: bearer c8a1a721ba9150027aad31001a360e253e7fd52d" https://api.github.com/graphql
 GITHUB_API_TOKEN = os.environ.get('GITHUB_API_TOKEN')
 if not GITHUB_API_TOKEN:
     raise ValueError("API token not specified; set the GITHUB_API_TOKEN environment variable to your Github API token")
